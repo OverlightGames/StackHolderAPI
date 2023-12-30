@@ -1,6 +1,6 @@
 name: StackHolderAPI
-version: '1.0.3'
+version: '1.0.4'
 main: me.higherlevel.stackholderapi.StackHolderAPI
 api-version: '1.20'
-depend: [StackAPI]
+depend: [StackAPI, CommandAPI]
 description: A plugin for easily creating and keeping track of new inventories.

@@ -5,6 +5,7 @@ import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.ArgumentSuggestions;
 import dev.jorel.commandapi.arguments.LiteralArgument;
 import dev.jorel.commandapi.arguments.PlayerArgument;
+import dev.jorel.commandapi.arguments.StringArgument;
 import me.higherlevel.stackapi.commands.StackCommand;
 import me.higherlevel.stackholderapi.holders.StackHolderInventoryManager;
 import org.bukkit.entity.Player;
@@ -15,7 +16,7 @@ public class StackHolderCommand extends StackCommand {
     public StackHolderCommand() {
         //stackholder <id> [<player>]
         super(new CommandAPICommand("stackholder")
-                .withArguments(new LiteralArgument("id").replaceSuggestions(ArgumentSuggestions.stringsAsync(commandSenderSuggestionInfo -> CompletableFuture.supplyAsync(() -> StackHolderInventoryManager.getIds().toArray(new String[0])))),
+                .withArguments(new StringArgument("id").replaceSuggestions(ArgumentSuggestions.stringsAsync(commandSenderSuggestionInfo -> CompletableFuture.supplyAsync(() -> StackHolderInventoryManager.getIds().toArray(new String[0])))),
                         new PlayerArgument("player"))
                 .executes((sender, args) -> {
                     String id = (String) args.get("id");
@@ -26,7 +27,7 @@ public class StackHolderCommand extends StackCommand {
                     player.openInventory(StackHolderInventoryManager.fromId(id).inventory);
                 }),
                 new CommandAPICommand("stackholder")
-                        .withArguments(new LiteralArgument("id").replaceSuggestions(ArgumentSuggestions.stringsAsync(commandSenderSuggestionInfo -> CompletableFuture.supplyAsync(() -> StackHolderInventoryManager.getIds().toArray(new String[0])))))
+                        .withArguments(new StringArgument("id").replaceSuggestions(ArgumentSuggestions.stringsAsync(commandSenderSuggestionInfo -> CompletableFuture.supplyAsync(() -> StackHolderInventoryManager.getIds().toArray(new String[0])))))
                         .executesPlayer((sender, args) -> {
                             String id = (String) args.get("id");
                             if (StackHolderInventoryManager.fromId(id) == null) {
