@@ -4,7 +4,7 @@
   <groupId>me.higherlevel</groupId>
   <artifactId>StackHolderAPI</artifactId>
   <name>StackHolderAPI</name>
-  <version>1.0.1</version>
+  <version>1.0.3</version>
   <build>
     <resources>
       <resource>
@@ -23,25 +23,15 @@
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.2.4</version>
         <executions>
           <execution>
-            <id>shade</id>
             <phase>package</phase>
             <goals>
               <goal>shade</goal>
             </goals>
           </execution>
         </executions>
-        <configuration>
-          <minimizeJar>true</minimizeJar>
-          <relocations>
-            <relocation>
-              <pattern>dev.jorel.commandapi</pattern>
-              <shadedPattern>me.higherlevel.commandapi</shadedPattern>
-            </relocation>
-          </relocations>
-        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -63,9 +53,9 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>me.higherlevel</groupId>
-      <artifactId>stackapi</artifactId>
-      <version>1.0.9.2</version>
+      <groupId>dev.jorel</groupId>
+      <artifactId>commandapi-bukkit-core</artifactId>
+      <version>9.3.0</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

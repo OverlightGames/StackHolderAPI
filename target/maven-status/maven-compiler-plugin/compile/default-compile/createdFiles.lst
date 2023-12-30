@@ -1,3 +1,5 @@
+me\higherlevel\stackholderapi\Commands.class
+me\higherlevel\stackholderapi\holders\StackHolder.class
 me\higherlevel\stackholderapi\StackHolderAPI.class
 me\higherlevel\stackholderapi\holders\StackHolderInventoryManager.class
-me\higherlevel\stackholderapi\holders\StackHolderInventory.class
+me\higherlevel\stackholderapi\commands\StackHolderCommand.class

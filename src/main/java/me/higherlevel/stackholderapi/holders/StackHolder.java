@@ -1,29 +1,37 @@
 package me.higherlevel.stackholderapi.holders;
 
-import me.higherlevel.stackapi.items.StackItem;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
-public abstract class StackHolderInventory implements InventoryHolder {
+public abstract class StackHolder implements InventoryHolder {
     public Inventory inventory;
 
     public void registerInventory(String id) {
         StackHolderInventoryManager.registerInventory(this, id);
     }
 
-    public StackHolderInventory(int rowCount, String title) {
+    public StackHolder(InventoryType type) {
+        inventory = Bukkit.createInventory(this, type);
+    }
+
+    public StackHolder(InventoryType type, String title) {
+        inventory = Bukkit.createInventory(this, type, MiniMessage.miniMessage().deserialize(title));
+    }
+
+    public StackHolder(int rowCount) {
+        inventory = Bukkit.createInventory(this, rowCount * 9);
+    }
+
+    public StackHolder(int rowCount, String title) {
         inventory = Bukkit.createInventory(this, rowCount * 9, MiniMessage.miniMessage().deserialize(title));
     }
 
-    public StackHolderInventory(int rowCount, String title, ItemStack fillItem) {
+    public StackHolder(int rowCount, String title, ItemStack fillItem) {
         inventory = Bukkit.createInventory(this, rowCount * 9, MiniMessage.miniMessage().deserialize(title));
 
         for (int i = 0; i < inventory.getSize(); i++) {
@@ -31,12 +39,10 @@ public abstract class StackHolderInventory implements InventoryHolder {
         }
     }
 
-    public StackHolderInventory(int rowCount, String title, List<ItemStack> items) {
+    public StackHolder(int rowCount, String title, ItemStack[] items) {
         inventory = Bukkit.createInventory(this, rowCount * 9, MiniMessage.miniMessage().deserialize(title));
 
-        for (int i = 0; i < items.size(); i++) {
-            inventory.setItem(i, items.get(i));
-        }
+        inventory.setContents(items);
     }
 
     @Override

@@ -6,6 +6,7 @@ public final class StackHolderAPI extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        Commands.onEnable();
         getLogger().info("Enabled.");
     }
 
