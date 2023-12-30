@@ -29,6 +29,9 @@ public class StackHolderCommand extends StackCommand {
                         .withArguments(new LiteralArgument("id").replaceSuggestions(ArgumentSuggestions.stringsAsync(commandSenderSuggestionInfo -> CompletableFuture.supplyAsync(() -> StackHolderInventoryManager.getIds().toArray(new String[0])))))
                         .executesPlayer((sender, args) -> {
                             String id = (String) args.get("id");
+                            if (StackHolderInventoryManager.fromId(id) == null) {
+                                throw CommandAPI.failWithString("StackHolder with id '" + id + "' not found!");
+                            }
                             sender.openInventory(StackHolderInventoryManager.fromId(id).inventory);
                         })
         );
