@@ -1,18 +1,21 @@
 package me.higherlevel.stackholderapi.holders;
 
+import me.higherlevel.stackholderapi.StackHolderAPI;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class StackHolder implements InventoryHolder {
+public abstract class StackHolder implements InventoryHolder, Listener {
     public Inventory inventory;
 
     public void registerInventory(String id) {
-        StackHolderInventoryManager.registerInventory(this, id);
+        StackHolderManager.registerInventory(this, id);
+        Bukkit.getPluginManager().registerEvents(this, StackHolderAPI.getInstance());
     }
 
     public StackHolder(InventoryType type) {

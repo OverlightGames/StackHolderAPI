@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StackHolderInventoryManager {
+public class StackHolderManager {
     private static Map<String, StackHolder> inventories = new HashMap<>();
 
     public static void registerInventory(@NotNull StackHolder inventory, @NotNull String id) {

@@ -1,5 +1,5 @@
 name: StackHolderAPI
-version: '1.0.4'
+version: '1.0.10'
 main: me.higherlevel.stackholderapi.StackHolderAPI
 api-version: '1.20'
 depend: [StackAPI, CommandAPI]
